@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Land;
+use App\Models\Property;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -24,9 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-$land = land::all();
+$property = Property::latest()->paginate(10);
 
-        return view('home',compact('land'));
+        return view('home',compact('property'));
     }
 public function brokers(){
 $brokers = User::where('role',3)->get();

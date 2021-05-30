@@ -10,24 +10,20 @@ class MessagesController extends Controller
 {
 
 public function chat(){
-$profile = user::where('role',1)->limit(1)->pluck('id');
-return view('messageadmin',compact('profile'));
+return view('messageadmin');
 }
 
 
 public function store(Request $request)
 {
-if ($request->profile_no == NULL)
-$profile = user::where('role',1)->limit(1)->pluck('id');
-foreach($profile as $profile){
+// dd($request->message);
   messages::create([
         'message' => $request->message,
         'user_id' => auth()->user()->id,
-        'profile_id' => $profile,
     ]);
-}
-
  return redirect('/message');
-
 }
+
+
+
 }

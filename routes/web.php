@@ -23,9 +23,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/adminhome', [App\Http\Controllers\AdminController::class, 'index']);
 Route::post('/storeland', [App\Http\Controllers\AdminController::class, 'store']);
 Route::get('/delete/{id}',[App\Http\Controllers\AdminController::class, 'destroy']);
+Route::get('/edit/{id}',[App\Http\Controllers\AdminController::class, 'edit']);
+Route::post('/update',[App\Http\Controllers\AdminController::class, 'update']);
 
 
 Route::get('/message',[App\Http\Controllers\MessagesController::class, 'chat']);
 Route::post('/message/store',[App\Http\Controllers\MessagesController::class, 'store']);
 
-Route::get('/brokers', [App\Http\Controllers\HomeController::class, 'brokers']);
+
+Route::get('/book/{id}',[App\Http\Controllers\BookingController::class, 'book']);

@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="/storeland" enctype="multipart/form-data" method="post">
+@forelse($property as $property)
+
+{{$property->name}}
+{{$property->price}}
+
+{{$property->description}}
+
+<img src="/storage/{{$property->image}}" class="w-100" style="max-width:400px" >
+
+
+
+<form action="/update" enctype="multipart/form-data" method="post">
         @csrf
  <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -59,6 +70,7 @@
 
       </div>
       <div class="row">
+<input type="hidden" name="id" value="{{$property->id}}">
           <button class="btn btn-primary">add new property</button>
       </div>
     </div>
@@ -68,7 +80,6 @@
 
 
 
-
-
-
+@empty
+@endforelse
 @endsection
